@@ -13,23 +13,24 @@ public class UserDao extends DAOTemplate {
 	// ユーザー情報をデータベースに挿入するメソッド
 	public DB_USER insert(DB_USER db_user) {
 		// 挿入用のSQL文を定義
-		String sql = "XXXXXXXXXX";
+		String insertSql = "INSERT INTO USER (ID, NAME, PASSWORD) VALUES (?, ?, ?)";
+
 
 		// リソースを自動的に解放するためのtry-with-resources文
 		try (Connection con = createConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql);) {
+				PreparedStatement pstmt = con.prepareStatement(insertSql);) {
 			// ユーザーIDを設定
-			pstmt.setInt(XXXXXXXXXX, XXXXXXXXXX);
+			pstmt.setInt(1, db_user.getId());
 			// ユーザー名を設定
-			pstmt.setString(XXXXXXXXXX, XXXXXXXXXX);
+			pstmt.setString(2, db_user.getName());
 			// パスワードを設定
-			pstmt.setString(XXXXXXXXXX, XXXXXXXXXX);
+			pstmt.setString(3, db_user.getPassword());
 
 			// SQLを実行し、ユーザー情報を挿入
-			pstmt.XXXXXXXXXX;
+			pstmt.executeUpdate();
 
 			// 挿入したユーザー情報を返す
-			return XXXXXXXXXX;
+			return db_user;
 			
 		} catch (SQLException e) {
 			// SQL例外が発生した場合、実行時例外に変換してスロー
@@ -69,18 +70,18 @@ public class UserDao extends DAOTemplate {
 	// ログイン情報をチェックするメソッド
 	public DB_USER checkLogin(String name, String password) {
 		// ログインチェック用のSQL文を定義
-		String sql = "XXXXXXXXXX";
+		String sql = "SELECT * FROM USER WHERE NAME = ? AND PASSWORD = ?;";
 
 		// リソースを自動的に解放するためのtry-with-resources文
 		try (Connection con = createConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);) {
 			// ユーザー名を設定
-			pstmt.setString(XXXXXXXXXX, XXXXXXXXXX);
+			pstmt.setString(1, name);
 			// パスワードを設定
-			pstmt.setString(XXXXXXXXXX, XXXXXXXXXX);
+			pstmt.setString(2, password);
 
 			// SQL実行し、結果を取得
-			ResultSet rs = pstmt.XXXXXXXXXX;
+			ResultSet rs = pstmt.executeQuery();
 
 			DB_USER result = null;
 			if (rs.next()) {
@@ -88,7 +89,7 @@ public class UserDao extends DAOTemplate {
 				String resultName = rs.getString("XXXXXXXXXX");
 				String resultPassword = rs.getString("XXXXXXXXXX");
 				// 結果セットからユーザー情報を取得し、DB_USERオブジェクトを生成
-				result = new DB_USER(XXXXXXXXXX, XXXXXXXXXX, XXXXXXXXXX);
+				result = new DB_USER(rs.getInt("ID"), rs.getString("NAME"), rs.getString("PASSWORD"));
 			}
 
 			// 取得したユーザー情報を返す

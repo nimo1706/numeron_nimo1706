@@ -89,6 +89,9 @@
 		    <form action="start" method="get">
 		        <input type="submit" value="再ゲーム" class="button">
 		    </form>
+   			<form action="score" method="post">
+				<input type="submit" value="スコアに登録" class="button">
+			</form>
    		    <form action="logout" method="get">
 		        <input type="submit" value="ログアウト" class="button">
 		    </form>

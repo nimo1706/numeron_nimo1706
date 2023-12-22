@@ -58,9 +58,9 @@ public class NumeronStartGameServlet extends HttpServlet {
 
 		} else {
 			// リクエストからプレイヤーの選択した数値を取得
-			String playerNumber = request.getParameter("XXXXXXXXXX");
+			String playerNumber = request.getParameter("");
 			// CPUの数値をランダムに生成
-			String cpuNumber = service.XXXXXXXXXX();
+			String cpuNumber = service.generateRandomNumber();
 
 			// ゲームの状態をセッションに設定
 			session.setAttribute("playerGameState", new GameState(playerNumber, new ArrayList<>()));

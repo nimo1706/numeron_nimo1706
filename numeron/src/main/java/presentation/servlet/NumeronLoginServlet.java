@@ -25,7 +25,7 @@ public class NumeronLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// ログイン画面にフォワードする
-		String view = "XXXXXXXXXX";
+		String view = "/WEB-INF/view/numeron/login.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
@@ -46,17 +46,17 @@ public class NumeronLoginServlet extends HttpServlet {
 		}
 
 		// リクエストからユーザー名とパスワードを取得
-		String name = request.getParameter("XXXXXXXXXX");
-		String password = request.getParameter("XXXXXXXXXX");
+		String name = request.getParameter("username");
+		String password = request.getParameter("password");
 
 		// サービスクラスのログイン処理を呼び出し、ユーザー情報を取得
-		User user = service.XXXXXXXXXX(XXXXXXXXXX, XXXXXXXXXX);
+		User user = service.login(name, password);
 
 		// ログインに成功した場合
 		if (user != null) {
 			// 新しいセッションを作成し、ユーザー情報をセッションに設定
 			session = request.getSession(true);
-			session.setAttribute("XXXXXXXXXX", XXXXXXXXXX);
+			session.setAttribute("user", user);
 
 			// スタート画面にリダイレクト
 			response.sendRedirect(request.getContextPath() + "/start");
@@ -65,7 +65,7 @@ public class NumeronLoginServlet extends HttpServlet {
 			request.setAttribute("loginFailure", "ログインできませんでした。");
 
 			// ログイン画面にフォワード
-			String view = "XXXXXXXXXX";
+			String view = "/WEB-INF/view/login.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
 		}

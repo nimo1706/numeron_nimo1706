@@ -25,7 +25,7 @@ public class NumeronRegisterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// ユーザー登録画面にフォワードする
-		String view = "XXXXXXXXXX";
+		String view = "/WEB-INF/view/register.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
@@ -38,17 +38,17 @@ public class NumeronRegisterServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// リクエストからユーザー名とパスワードを取得
-		String name = request.getParameter("XXXXXXXXXX");
-		String password = request.getParameter("XXXXXXXXXX");
+		String name = request.getParameter("username");
+		String password = request.getParameter("password");
 
 		// サービスクラスのユーザー登録処理を呼び出し
-		User user = service.XXXXXXXXXX(XXXXXXXXXX, XXXXXXXXXX);
+		User user = service.resister(name, password);
 
 		// ユーザー登録に成功した場合
 		if (user != null) {
 			// セッションを新規作成し、ユーザー情報をセッションに設定
 			HttpSession session = request.getSession();
-			session.setAttribute("XXXXXXXXXX", XXXXXXXXXX);
+			session.setAttribute("user", user);
 
 			// ゲームのスタート画面にリダイレクト
 			response.sendRedirect(request.getContextPath() + "/start");

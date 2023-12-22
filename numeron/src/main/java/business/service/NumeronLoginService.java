@@ -16,12 +16,12 @@ public class NumeronLoginService {
 		User user = null;
 
 		// データベースからログイン情報をチェック
-		DB_USER db_user = dao.XXXXXXXXXX(XXXXXXXXXX, XXXXXXXXXX);
+		DB_USER db_user = dao.checkLogin(name, password);
 
 		// データベースからの応答がnullでない場合（つまりログイン成功の場合）
 		if (db_user != null) {
 			// DB_USERオブジェクトからUserオブジェクトを生成
-			user = new User(XXXXXXXXXX, XXXXXXXXXX);
+			user = new User(db_user.getId(), db_user.getName());
 		}
 
 		// 最終的なUserオブジェクトを返す（ログイン失敗の場合はnull）

@@ -32,6 +32,9 @@
 				<input type="text" name="number" required pattern="^(?!.*(.).*\1)[0-9]{3}$" title="3桁の被らない半角数字">
 				<input type="submit" value="ゲーム開始" class="button">
 			</form>
+			<form action="score" method="get">
+				<input type="submit" value="スコア表示" class="button">
+			</form>
 		</div>
 	</div>
 
