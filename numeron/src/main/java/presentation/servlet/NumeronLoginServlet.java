@@ -25,7 +25,7 @@ public class NumeronLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// ログイン画面にフォワードする
-		String view = "/WEB-INF/view/numeron/login.jsp";
+		String view = "/WEB-INF/view/login.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
