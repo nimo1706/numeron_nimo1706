@@ -58,7 +58,7 @@ public class NumeronRegisterServlet extends HttpServlet {
 			request.setAttribute("loginFailure", "登録できませんでした。名前が既に登録されているかも。");
 
 			// ユーザー登録画面にフォワード
-			String view = "XXXXXXXXXX";
+			String view = "/WEB-INF/view/register.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
 		}

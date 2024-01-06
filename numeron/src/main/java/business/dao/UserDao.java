@@ -85,9 +85,9 @@ public class UserDao extends DAOTemplate {
 
 			DB_USER result = null;
 			if (rs.next()) {
-				int resultId = rs.getInt("XXXXXXXXXX");
-				String resultName = rs.getString("XXXXXXXXXX");
-				String resultPassword = rs.getString("XXXXXXXXXX");
+				int resultId = rs.getInt("ID");
+				String resultName = rs.getString("NAME");
+				String resultPassword = rs.getString("PASSWORD");
 				// 結果セットからユーザー情報を取得し、DB_USERオブジェクトを生成
 				result = new DB_USER(rs.getInt("ID"), rs.getString("NAME"), rs.getString("PASSWORD"));
 			}

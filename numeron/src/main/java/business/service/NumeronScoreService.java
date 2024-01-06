@@ -14,7 +14,7 @@ public class NumeronScoreService {
 
 	public List<Score> findAll() {
 
-		return XXXXXXX;
+		return ;
 	}
 
 	public int resister(User user, GameState playerGameState) {
@@ -31,7 +31,7 @@ public class NumeronScoreService {
 
 		DB_SCORE db_score = new DB_SCORE(id, result, playerGameState.getGuessList().size(), user.getId());
 
-		return dao.insert(db_score);
+		return ;
 	}
 
 }

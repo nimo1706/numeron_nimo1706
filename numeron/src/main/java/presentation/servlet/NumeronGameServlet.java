@@ -35,7 +35,7 @@ public class NumeronGameServlet extends HttpServlet {
 
 		} else {
 			// ゲーム画面にフォワードする
-			String view = "XXXXXXXXXX";
+			String view = "/WEB-INF/view/game.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
 		}
