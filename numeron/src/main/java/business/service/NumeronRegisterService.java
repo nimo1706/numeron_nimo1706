@@ -24,7 +24,7 @@ public class NumeronRegisterService {
 			int id = dao.getNextId();
 
 			// 新しいユーザー情報を持つDB_USERオブジェクトを生成
-			DB_USER db_user = new DB_USER(0, name, password);
+			DB_USER db_user = new DB_USER(id, name, password);
 
 			// DB_USERオブジェクトをデータベースに挿入
 			db_user = dao.insert(db_user);

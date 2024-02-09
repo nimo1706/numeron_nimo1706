@@ -61,11 +61,11 @@ public class NumeronGameServlet extends HttpServlet {
 
 		} else {
 			// ゲームのプレイヤーとCPUの状態をセッションから取得
-			GameState playerGameState = (GameState) session.getAttribute("XXXXXXXXXX");
-			GameState cpuGameState = (GameState) session.getAttribute("XXXXXXXXXX");
+			GameState playerGameState = (GameState) session.getAttribute("playerGameState");
+			GameState cpuGameState = (GameState) session.getAttribute("cpuGameState");
 
 			// リクエストから推測された数値を取得
-			String guessNumber = request.getParameter("XXXXXXXXXX");
+			String guessNumber = request.getParameter("guessNumber");
 
 			// 推測処理を実行
 			service.processGuess(playerGameState, cpuGameState, guessNumber);
